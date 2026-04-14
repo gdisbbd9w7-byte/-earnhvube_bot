@@ -1,143 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Money App</title>
+<meta name="theme-color" content="#0b1a2a">
+
+<title>EarnEase Download</title>
 
 <style>
 body {
-  font-family: Arial;
-  background: #f2f2f2;
-  margin: 0;
+    margin: 0;
+    background: linear-gradient(135deg,#0b1a2a,#132c45);
+    color: white;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.container {
-  max-width: 350px;
-  margin: 30px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.box {
+    background: #132c45;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 350px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
-h1 { color: #1976d2; }
-
-.stats {
-  background: #eee;
-  padding: 15px;
-  border-radius: 10px;
-  margin: 15px 0;
-  display: flex;
-  justify-content: space-around;
+h2 {
+    margin-bottom: 5px;
 }
 
-.btn {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  color: white;
+p {
+    font-size: 14px;
+    opacity: 0.8;
 }
 
-.blue { background:#1976d2; }
-.green { background:#28a745; }
-.red { background:#dc3545; }
+button {
+    padding: 14px;
+    width: 100%;
+    margin-top: 12px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.verify {
+    background: orange;
+}
+
+.download {
+    background: #2ecc71;
+    display: none;
+}
+
+button:active {
+    transform: scale(0.96);
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>Telegram Mini Earning App</h1>
-  <p>Developed by <b>EMRAN HOSSAIN</b></p>
+<div class="box">
+    <h2>EarnEase App</h2>
+    <p>Verify to download the latest version</p>
 
-  <div class="stats">
-    <div>
-      <h2 id="ads">0</h2>
-      <p>Completed Ads</p>
-    </div>
-    <div>
-      <h2 id="points">0</h2>
-      <p>Total Points</p>
-    </div>
-  </div>
-
-  <button class="btn blue" onclick="rewardAd()">Reward Interstitial</button>
-  <button class="btn blue" onclick="popupAd()">Reward Popup</button>
-  <button class="btn blue" onclick="inAppAd()">In-App Interstitial</button>
-
-  <button class="btn green" onclick="withdraw()">Withdraw</button>
-  <button class="btn red" onclick="reset()">Reset Count</button>
+    <button class="verify" onclick="startVerify()">Verify Now</button>
+    <button id="downloadBtn" class="download">Download EarnEase</button>
 </div>
 
 <script>
-// Load data
-let ads = parseInt(localStorage.getItem("ads")) || 0;
-let points = parseInt(localStorage.getItem("points")) || 0;
+function startVerify() {
+    let btn = document.querySelector(".verify");
+    btn.innerText = "Verifying...";
+    btn.disabled = true;
 
-updateUI();
-
-function updateUI(){
-  document.getElementById("ads").innerText = ads;
-  document.getElementById("points").innerText = points;
+    setTimeout(() => {
+        btn.innerText = "Verified ✔";
+        document.getElementById("downloadBtn").style.display = "block";
+    }, 3000);
 }
 
-// Save
-function save(){
-  localStorage.setItem("ads", ads);
-  localStorage.setItem("points", points);
-  updateUI();
-}
-
-// Reward Interstitial → লিঙ্ক ওপেন হবে
-function rewardAd(){
-  window.open("https://emran4839.blogspot.com/2026/04/alhamdulillah.html", "_blank");
-  
-  // পয়েন্ট/এড কন্টিনিউ করতে চাইলে আনকমেন্ট করো
-  /*
-  ads++;
-  points += 10;
-  save();
-  alert("Reward Added!");
-  */
-}
-
-// Popup → Monetag link
-function popupAd(){
-  window.open("https://omg10.com/4/10833910", "_blank");
-
-  setTimeout(() => {
-    ads++;
-    points += 5;
-    save();
-    alert("Reward Added!");
-  }, 3000);
-}
-
-// In-App
-function inAppAd(){
-  ads++;
-  points += 3;
-  save();
-}
-
-// Withdraw → WhatsApp
-function withdraw(){
-  let msg = `Hello, I want to withdraw.\nPoints: ${points}`;
-  let url = "https://wa.me/8801320512829?text=" + encodeURIComponent(msg);
-  window.open(url, "_blank");
-}
-
-// Reset
-function reset(){
-  ads = 0;
-  points = 0;
-  save();
-}
+document.getElementById("downloadBtn").onclick = () => {
+    // 👉 এখানে তোমার EarnEase APK link বসাও
+    window.location.href = "https://www.mediafire.com/file/lc2jdqvb0v5jf7y/app-apk-69dd472cdc801-1776109356+(1).apk/file";
+};
 </script>
 
 </body>
